@@ -7,10 +7,10 @@
 #### -Code-
     linear-regression.py
 #### -Dataset-
-    BostonHousing.csv
+    carDetails.csv
 ### Model using Libraries
 #### -Code-
     linear-regression-lib.py
 #### -Dataset-
-    BostonHousing.csv
+    carDetails.csv
 ---
