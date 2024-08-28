@@ -1,8 +1,9 @@
 # Files associated with linear-regression learning.
-
+---
 ## README
-## linear-regression files
-### Model from scratch
+---
+## linear-regression
+### Model from Scratch
 #### -Code-
     linear-regression.py
 #### -Dataset-
@@ -12,3 +13,4 @@
     linear-regression-lib.py
 #### -Dataset-
     BostonHousing.csv
+---
