@@ -44,7 +44,7 @@ y = data['Price'].values        # Price as dependent variable y - numpy array wi
 w = 0.0 # Weight multiplied to feature value to reach target value
 b = 0.0 # Constant added to weigthed feature value 
 learning_rate = 0.01 # How much w and b should change (jump/step) with iteration. 0.001 to 1.0 but up to discretion.
-epoch = 1000 # An epoch represents one complete pass through the entire training dataset during the training process.
+epochs = 1000 # An epoch represents one complete pass through the entire training dataset during the training process.
              # During each epoch, the model’s parameters are updated based on the gradients computed from the training 
              # data. Multiple epochs are necessary to iteratively adjust the parameters to minimize the cost function.
 
@@ -119,3 +119,7 @@ def gradient_descent(x, y, w, b, learning_rate, epochs):
     
     return w, b
 # end gradient_descent()
+
+# Train the model
+w, b = gradient_descent(X, y, w, b, learning_rate, epochs)
+print(f"Trained parameters: w = {w:.2f}, b = {b:.2f}")
