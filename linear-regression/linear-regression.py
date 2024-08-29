@@ -23,6 +23,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import pickle
 
 # Load dataset in same directory as linear-regresion.py
 # Use the dataset to train the linear regression model
@@ -130,9 +131,16 @@ def gradient_descent(x, y, w, b, learning_rate, epochs):
     return w, b
 # end gradient_descent()
 
+# Save the model parameters to a file
+def save_model(w, b, filename):
+    with open(filename, 'wb') as file:
+        pickle.dump({'w': w, 'b': b}, file)
+    print(f"Model saved to {filename}")
+
 # Train the model
 w, b = gradient_descent(x, y, w, b, learning_rate, epochs)
 print(f"Trained parameters: w = {w:.2f}, b = {b:.2f}")
+save_model(w, b, 'linear_regression_model.pkl')
 
 # Plot the results
 plt.scatter(x, y, color='blue', label='Data Points')
