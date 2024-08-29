@@ -132,15 +132,16 @@ def gradient_descent(x, y, w, b, learning_rate, epochs):
 # end gradient_descent()
 
 # Save the model parameters to a file
-def save_model(w, b, filename):
+def save_model(w, b, filename, x_mean, x_std, y_mean, y_std):
     with open(filename, 'wb') as file:
-        pickle.dump({'w': w, 'b': b}, file)
+        pickle.dump({'w': w, 'b': b, 'x_mean': x_mean, 'x_std': x_std, 'y_mean': y_mean, 'y_std': y_std}, file)
     print(f"Model saved to {filename}")
+# end save_model()
 
 # Train the model
 w, b = gradient_descent(x, y, w, b, learning_rate, epochs)
 print(f"Trained parameters: w = {w:.2f}, b = {b:.2f}")
-save_model(w, b, 'linear_regression_model.pkl')
+save_model(w, b, 'linear_regression_model.pkl', x_mean, x_std, y_mean, y_std)
 
 # Plot the results
 plt.scatter(x, y, color='blue', label='Data Points')
