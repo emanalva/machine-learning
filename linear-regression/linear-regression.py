@@ -4,12 +4,19 @@
 
 # ////////////////////////////////////////////////////////////////////////////////
 # Terminology:
-# Dependent Variable (y): The variable we want to predict.
-# Independent Variable (x): The variable used to predict the dependent variable.
-# Coefficients (w): Parameters of the model that we estimate from the data.
-# Intercept (b): The value of y when x is 0.
-# Cost Function: A measure of how well our model fits the data. For linear regression, we use Mean Squared Error (MSE).
-# Gradient Descent: An optimization algorithm used to minimize the cost function by adjusting the model parameters.
+# 
+# Dependent Variable (y): 
+#       The variable we want to predict.
+# Independent Variable (x): 
+#       The variable used to predict the dependent variable.
+# Coefficients (w): 
+#       Parameters of the model that we estimate from the data.
+# Intercept (b): 
+#       The value of y when x is 0.
+# Cost Function: 
+#       A measure of how well our model fits the data. For linear regression, we use Mean Squared Error (MSE).
+# Gradient Descent: 
+#       An optimization algorithm used to minimize the cost function by adjusting the model parameters.
 # ////////////////////////////////////////////////////////////////////////////////
 
 # Libraries
@@ -40,3 +47,33 @@ learning_rate = 0.01 # How much w and b should change (jump/step) with iteration
 epoch = 1000 # An epoch represents one complete pass through the entire training dataset during the training process.
              # During each epoch, the model’s parameters are updated based on the gradients computed from the training 
              # data. Multiple epochs are necessary to iteratively adjust the parameters to minimize the cost function.
+
+# ////////////////////////////////////////////////////////////////////////////////
+# computer_cost(x, y, w, b)
+# 
+# Purpose:
+#       Calculate the Mean Squared Error (MSE) cost function for linear regression.
+#       This measures how well the model's predictions match the actual target values.
+# Algorithm: 
+#       Mean Squared Error (MSE)
+# Inputs:
+#       x: Array of feature values (e.g., "Max Power" in your dataset).
+#       y: Array of actual target values (e.g., "Price" in your dataset).
+#       w: Weight parameter of the linear regression model.
+#       b: Bias parameter of the linear regression model.
+# Outputs:
+#       Total cost (MSE) calculated as the average of the squared differences between
+#       the predicted values and the actual target values.
+# ////////////////////////////////////////////////////////////////////////////////
+def compute_cost(x, y, w, b):
+
+    n = len(x) # number of data points
+
+    prediction = x * w + b # Prediction = feature value, times the weight, plus the bias
+
+    squared_error = (prediction - y) ** 2 # Estimated value minus real value, squared
+
+    total_cost = np.sum(squared_error) / (2 * n) # Computer MSE
+
+    return total_cost
+# compute)cost(x, y, w, b)
