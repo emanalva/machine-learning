@@ -28,17 +28,27 @@ import matplotlib.pyplot as plt
 # Use the dataset to train the linear regression model
 # This trained model can then be applied to new cases where some data is missing or unknown,
 # allowing us to make predictions based on the relationships learned from the training data
-file_path = 'carDetails.csv'
+file_path = 'cleaned_carDetails.csv'
 data = pd.read_csv(file_path)
 
-print(data.head()) # Shows a small chunk of the intial entries in the dataset
-print(data.info()) # Show stats and information about the labels
+# print(data.head()) # Shows a small chunk of the intial entries in the dataset
+# print(data.info()) # Show stats and information about the labels
 
 # Determine the independent and dependent variables, seen in data.info() for linear regression
 # Independent variables are the known or unchanged factors
 # Dependent variables are what we aim to predict or understand from the data
-X = data[['Max Power']].values  # Max power as independent variable x - numpy array with shape (n_samples, 1)
+x = data['Max Power'].values  # Max power as independent variable x - numpy array with shape (n_samples, 1)
 y = data['Price'].values        # Price as dependent variable y - numpy array with shape (n_samples)
+
+# Normalize x data
+x_mean = np.mean(x, axis=0)
+x_std = np.std(x, axis=0)
+x = (x - x_mean) / x_std
+
+# Normaliza y data
+y_mean = np.mean(y, axis=0)
+y_std = np.std(y, axis=0)
+y = (y - y_mean) / y_std
 
 # Initialize parameters
 w = 0.0 # Weight multiplied to feature value to reach target value
@@ -105,8 +115,8 @@ def gradient_descent(x, y, w, b, learning_rate, epochs):
         prediction = x * w + b # Prediction = feature value, times the weight, plus the bias
 
         # Compute the gradient (partial derivatives) for w and b
-        dw = np.sum((prediction - y) * X) / m
-        db = np.sum(prediction - y) / m
+        dw = np.sum((prediction - y) * x) / n
+        db = np.sum(prediction - y) / n
         
         # Update the parameters using the gradients and learning rate
         w -= learning_rate * dw
@@ -114,12 +124,22 @@ def gradient_descent(x, y, w, b, learning_rate, epochs):
         
         # Print the cost every 100 epochs for monitoring
         if epoch % 100 == 0:
-            cost = compute_cost(X, y, w, b)
+            cost = compute_cost(x, y, w, b)
             print(f"Epoch {epoch}: Cost = {cost:.4f}")
     
     return w, b
 # end gradient_descent()
 
 # Train the model
-w, b = gradient_descent(X, y, w, b, learning_rate, epochs)
+w, b = gradient_descent(x, y, w, b, learning_rate, epochs)
 print(f"Trained parameters: w = {w:.2f}, b = {b:.2f}")
+
+# Plot the results
+plt.scatter(x, y, color='blue', label='Data Points')
+plt.plot(x, w * x + b, color='red', label='Regression Line')
+plt.xlabel('Max Power')
+plt.ylabel('Price')
+plt.legend()
+plt.title('Linear Regression on Car Data')
+plt.show()
+
