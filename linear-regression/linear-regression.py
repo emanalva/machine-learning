@@ -14,9 +14,12 @@
 
 # Libraries
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 
 # Load dataset in same directory as linear-regresion.py
 file_path = 'carDetails.csv'
 data = pd.read_csv(file_path)
 
 print(data.head())
+print(data.info())
