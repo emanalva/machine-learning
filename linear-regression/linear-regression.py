@@ -5,11 +5,11 @@
 # ////////////////////////////////////////////////////////////////////////////////
 # Terminology:
 # 
-# Dependent Variable (y): 
-#       The variable we want to predict.
 # Independent Variable (x): 
 #       The variable used to predict the dependent variable.
-# Coefficients (w): 
+# Dependent Variable (y): 
+#       The variable we want to predict.
+# Coefficient (w): 
 #       Parameters of the model that we estimate from the data.
 # Intercept (b): 
 #       The value of y when x is 0.
@@ -61,7 +61,7 @@ epoch = 1000 # An epoch represents one complete pass through the entire training
 #       y: Array of actual target values (e.g., "Price" in your dataset).
 #       w: Weight parameter of the linear regression model.
 #       b: Bias parameter of the linear regression model.
-# Outputs:
+# Returns:
 #       Total cost (MSE) calculated as the average of the squared differences between
 #       the predicted values and the actual target values.
 # ////////////////////////////////////////////////////////////////////////////////
@@ -76,4 +76,46 @@ def compute_cost(x, y, w, b):
     total_cost = np.sum(squared_error) / (2 * n) # Computer MSE
 
     return total_cost
-# compute)cost(x, y, w, b)
+# end compute_cost()
+
+# ////////////////////////////////////////////////////////////////////////////////
+# Purpose:
+#       Perform gradient descent to optimize the parameters w and b.
+# Algorithm: 
+#       Gradient Descent
+# Inputs:
+#       x: Array of feature values (input).
+#       y: Array of actual target values (output).
+#       w: Initial weight parameter of the linear regression model.
+#       b: Initial bias parameter of the linear regression model.
+#       learning_rate: The learning rate determines the step size during optimization.
+#       epochs: Number of iterations to perform gradient descent.
+# Outputs:
+#       Printed statement declaring the epoch and current cost
+# Returns:
+#       tuple: The optimized weight (w) and bias (b).
+# ////////////////////////////////////////////////////////////////////////////////
+def gradient_descent(x, y, w, b, learning_rate, epochs):
+
+    n = len(x) # number of data points
+
+    # Train through number of epochs (iterations)
+    for epoch in range(epochs):
+
+        prediction = x * w + b # Prediction = feature value, times the weight, plus the bias
+
+        # Compute the gradient (partial derivatives) for w and b
+        dw = np.sum((prediction - y) * X) / m
+        db = np.sum(prediction - y) / m
+        
+        # Update the parameters using the gradients and learning rate
+        w -= learning_rate * dw
+        b -= learning_rate * db
+        
+        # Print the cost every 100 epochs for monitoring
+        if epoch % 100 == 0:
+            cost = compute_cost(X, y, w, b)
+            print(f"Epoch {epoch}: Cost = {cost:.4f}")
+    
+    return w, b
+# end gradient_descent()
