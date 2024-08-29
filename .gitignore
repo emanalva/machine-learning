@@ -10,3 +10,6 @@ __pycache__/
 
 # Ignore logs
 *.log
+
+# Ignore pickle files that hold stored model parameters
+*.pkl
