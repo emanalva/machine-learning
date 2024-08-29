@@ -4,13 +4,19 @@
 ---
 ## linear-regression
 ### Model from Scratch
-#### -Code-
+#### Code:
+##### Simple 1 independent, 1 dependent variable
     linear-regression.py
-#### -Dataset-
-    carDetails.csv
+##### Multiple independent, 1 dependent variable
+    linear-regression-multiple-features.py
+#### Dataset(s):
+    carDetails.csv # Has <objects> in columb of Max Power
+#####
+    cleaned_carDetails.csv # Has <floats> in columb of Max Power
 ### Model using Libraries
-#### -Code-
+#### Code:
+##### Multiple independent, 1 dependent variable
     linear-regression-lib.py
-#### -Dataset-
-    carDetails.csv
+#### Dataset(s):
+    cleaned_carDetails.csv
 ---
