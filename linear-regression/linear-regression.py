@@ -25,7 +25,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 
-# Load dataset in same directory as linear-regresion.py
+# Load dataset in same directory as linear-regression.py
 # Use the dataset to train the linear regression model
 # This trained model can then be applied to new cases where some data is missing or unknown,
 # allowing us to make predictions based on the relationships learned from the training data
@@ -38,8 +38,8 @@ data = pd.read_csv(file_path)
 # Determine the independent and dependent variables, seen in data.info() for linear regression
 # Independent variables are the known or unchanged factors
 # Dependent variables are what we aim to predict or understand from the data
-x = data['Max Power'].values  # Max power as independent variable x - numpy array with shape (n_samples, 1)
-y = data['Price'].values        # Price as dependent variable y - numpy array with shape (n_samples)
+x = data['Max Power'].values # Max power as independent variable x - numpy array with shape (n_samples, 1)
+y = data['Price'].values # Price as dependent variable y - numpy array with shape (n_samples)
 
 # Normalize x data
 x_mean = np.mean(x, axis=0)
@@ -84,7 +84,7 @@ def compute_cost(x, y, w, b):
 
     squared_error = (prediction - y) ** 2 # Estimated value minus real value, squared
 
-    total_cost = np.sum(squared_error) / (2 * n) # Computer MSE
+    total_cost = np.sum(squared_error) / (2 * n) # Compute MSE
 
     return total_cost
 # end compute_cost()
@@ -151,4 +151,3 @@ plt.ylabel('Price')
 plt.legend()
 plt.title('Linear Regression on Car Data')
 plt.show()
-
