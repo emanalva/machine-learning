@@ -7,6 +7,8 @@
 #### Code:
 ##### Simple 1 independent, 1 dependent variable
     linear-regression.py
+#####
+    test-linear-regression.py
 ##### Multiple independent, 1 dependent variable
     linear-regression-multiple-features.py
 #### Dataset(s):
