@@ -30,5 +30,13 @@ print(data.info()) # Show stats and information about the labels
 # Determine the independent and dependent variables, seen in data.info() for linear regression
 # Independent variables are the known or unchanged factors
 # Dependent variables are what we aim to predict or understand from the data
-X = data[['Max Power']].values  # Max power as independent variable x
-y = data['Price'].values        # Price as dependent variable y 
+X = data[['Max Power']].values  # Max power as independent variable x - numpy array with shape (n_samples, 1)
+y = data['Price'].values        # Price as dependent variable y - numpy array with shape (n_samples)
+
+# Initialize parameters
+w = 0.0 # Weight multiplied to feature value to reach target value
+b = 0.0 # Constant added to weigthed feature value 
+learning_rate = 0.01 # How much w and b should change (jump/step) with iteration. 0.001 to 1.0 but up to discretion.
+epoch = 1000 # An epoch represents one complete pass through the entire training dataset during the training process.
+             # During each epoch, the model’s parameters are updated based on the gradients computed from the training 
+             # data. Multiple epochs are necessary to iteratively adjust the parameters to minimize the cost function.
