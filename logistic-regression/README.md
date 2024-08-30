@@ -19,4 +19,5 @@
 
 #### Dataset(s):
   - [data analysis](./data%20analysis) # plots from titanic.csv analysis in logistic-regression-lib.py
+  
   - [titanic.csv](./titanic.csv)
