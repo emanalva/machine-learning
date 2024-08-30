@@ -22,7 +22,10 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, classification_report
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+
+import numpy as np
+
 
 # Load the dataset
 data = pd.read_csv('titanic.csv')
@@ -72,23 +75,34 @@ y = data['Survived']
 
 # Split data intro 80% training and 20% testing sets
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
+x_fare_train, x_fare_test, y_fare_train, y_fare_test = train_test_split(x_fare, y, test_size=0.2, random_state=42)
 
 # Initialize the logistic regression models
-model_x = LogisticRegression(max_iter=1000)
-model_x_fare = LogisticRegression(max_iter=1000)
+model_x = LogisticRegression(max_iter=1000, class_weight='balanced')
+model_x_fare = LogisticRegression(max_iter=1000, class_weight='balanced')
 
 # Train the models
 model_x.fit(x_train, y_train)
-model_x_fare.fit(x_train, y_train)
+model_x_fare.fit(x_fare_train, y_fare_train)
 
 # Make predictions
 predict_y_x = model_x.predict(x_test)
-predict_y_x_fare = model_x_fare.predict(x_test)
+predict_y_x_fare = model_x_fare.predict(x_fare_test)
 
 # Evaluate the models
 print("Model without Fare")
 print("Accuracy:", accuracy_score(y_test, predict_y_x))
 print("Classification Report:\n", classification_report(y_test, predict_y_x))
 print("Model with Fare")
-print("Accuracy:", accuracy_score(y_test, predict_y_x_fare))
-print("Classification Report:\n", classification_report(y_test, predict_y_x_fare))
+print("Accuracy:", accuracy_score(y_fare_test, predict_y_x_fare))
+print("Classification Report:\n", classification_report(y_fare_test, predict_y_x_fare))
+
+# Plot confusion matrices
+fig, ax = plt.subplots(1, 2, figsize=(12, 5))
+sns.heatmap(confusion_matrix(y_test, predict_y_x), annot=True, fmt='d', cmap='Blues', ax=ax[0])
+ax[0].set_title('Confusion Matrix (without Fare)')
+
+sns.heatmap(confusion_matrix(y_fare_test, predict_y_x_fare), annot=True, fmt='d', cmap='Blues', ax=ax[1])
+ax[1].set_title('Confusion Matrix (with Fare)')
+
+plt.show()
