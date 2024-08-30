@@ -27,6 +27,9 @@ from sklearn.metrics import accuracy_score, classification_report
 # Load the dataset
 data = pd.read_csv('titanic.csv')
 
+# ////////////////////////////////////////////////////////////////////////////////
+# Commented out code to analyze data
+
 # # Display basic statistics
 # print(data.describe())
 
@@ -38,27 +41,54 @@ data = pd.read_csv('titanic.csv')
 # plt.show()  # Explicitly display the heatmap
 # plt.clf()
 
-# Convert "Sex" and "Survived" to categorical types for better plotting
-data['Sex'] = data['Sex'].astype('category')
-data['Survived'] = data['Survived'].astype('category')
+# # Histograms for feature distribution
+# data[['Age', 'Fare', 'Sex', 'Sibsp', 'Parch', 'Pclass', 'Embarked', 'Survived']].hist()
+# plt.show()  # Display histograms
 
-# Histograms for feature distribution
-data[['Age', 'Fare', 'Sex', 'Sibsp', 'Parch', 'Pclass', 'Embarked', 'Survived']].hist()
-plt.show()  # Display histograms
+# # Boxplot for Fare vs. Survived
+# plt.figure(figsize=(8, 6))
+# sns.boxplot(x='Survived', y='Fare', data=data)
+# plt.title('Boxplot of Fare vs. Survival')
+# plt.show()
 
-# Boxplot for Fare vs. Survived
-plt.figure(figsize=(8, 6))
-sns.boxplot(x='Survived', y='Fare', data=data)
-plt.title('Boxplot of Fare vs. Survival')
-plt.show()
-
-# Count plot for Sex vs. Survived
-sns.countplot(x='Sex', hue='Survived', data=data)
-plt.title('Count of Survival by Sex')
-plt.show()
+# # Count plot for Sex vs. Survived
+# sns.countplot(x='Sex', hue='Survived', data=data)
+# plt.title('Count of Survival by Sex')
+# plt.show()
+# ////////////////////////////////////////////////////////////////////////////////
 
 # Preprocessing 
 # Missing data already removed, titanic.csv should have only relevant data
-# Normalization
 
-# Model training
+# Choose features
+# I'm going to run two models to see impact on accuracy:
+#       1. without Fare
+#       2. with Fare
+x = data[['Sex']]
+x_fare = data[['Sex', 'Fare']] 
+
+# Choose target
+y = data['Survived']
+
+# Split data intro 80% training and 20% testing sets
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
+
+# Initialize the logistic regression models
+model_x = LogisticRegression(max_iter=1000)
+model_x_fare = LogisticRegression(max_iter=1000)
+
+# Train the models
+model_x.fit(x_train, y_train)
+model_x_fare.fit(x_train, y_train)
+
+# Make predictions
+predict_y_x = model_x.predict(x_test)
+predict_y_x_fare = model_x_fare.predict(x_test)
+
+# Evaluate the models
+print("Model without Fare")
+print("Accuracy:", accuracy_score(y_test, predict_y_x))
+print("Classification Report:\n", classification_report(y_test, predict_y_x))
+print("Model with Fare")
+print("Accuracy:", accuracy_score(y_test, predict_y_x_fare))
+print("Classification Report:\n", classification_report(y_test, predict_y_x_fare))
