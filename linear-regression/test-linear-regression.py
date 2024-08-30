@@ -8,7 +8,7 @@ import pickle
 def load_model(filename):
     with open(filename, 'rb') as file:
         model = pickle.load(file)
-    return model['w'], model['b'], model['x_mean'], model['x_std'], model['y_mean'], model['y_std'],
+    return model['w'], model['b'], model['x_mean'], model['x_std'], model['y_mean'], model['y_std']
 
 # Predict the price based on the input power
 def predict_price(max_power, w, b):
