@@ -32,7 +32,7 @@ y = (y - y_mean) / y_std
 w = np.zeros(x.shape[1]) # One weight for each feature
 b = 0.0 # Constant added to weigthed feature value 
 learning_rate = 0.01 # How much w and b should change (jump/step) with iteration. 0.001 to 1.0 but up to discretion.
-epochs = 1000 # An epoch represents one complete pass through the entire training dataset during the training process.
+epochs = 5000 # An epoch represents one complete pass through the entire training dataset during the training process.
              # During each epoch, the model’s parameters are updated based on the gradients computed from the training 
              # data. Multiple epochs are necessary to iteratively adjust the parameters to minimize the cost function.
 
@@ -101,7 +101,7 @@ def gradient_descent(x, y, w, b, learning_rate, epochs):
         b -= learning_rate * db
         
         # Print the cost every 100 epochs for monitoring
-        if epoch % 100 == 0:
+        if epoch % 500 == 0:
             cost = compute_cost(x, y, w, b)
             print(f"Epoch {epoch}: Cost = {cost:.4f}")
     
