@@ -8,6 +8,6 @@
 Scripts incorporating linear regression models: 
  - One built from scratch using gradient descent and another using libraries.
  - Includes scripts with one independent variable and scripts with multiple.
- - The try-3-features branch uses 3 features, while the main branch uses 5 features.
+ - The try-3-features branch uses 3 features, while the main branch uses 5 features (features = independent variables).
 
 <p align="right">Emanuel Alvarez :tm: </p>
