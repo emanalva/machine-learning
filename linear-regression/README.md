@@ -11,6 +11,8 @@
     test-linear-regression.py
 ##### Multiple independent, 1 dependent variable
     linear-regression-multiple-features.py
+#####
+    test-linear-regression-multiple-features.py
 #### Dataset(s):
     carDetails.csv # Has <objects> in columb of Max Power
 #####
