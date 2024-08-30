@@ -1,15 +1,24 @@
 # Ignore macOS system files
-.DS_Store
+*.DS_Store
 
 # Ignore Python cache files
 __pycache__/
 *.py[cod]
 
 # Ignore environment files
-.env
+*.env
 
 # Ignore logs
 *.log
 
 # Ignore pickle files that hold stored model parameters
 *.pkl
+
+# Ignore document file types as needed
+*.pages
+*.doc
+*.docx
+*.odt
+*.rtf
+*.tex
+
