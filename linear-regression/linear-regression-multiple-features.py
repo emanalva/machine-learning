@@ -8,7 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 
-# Load dataset in same directory as linear-regression.py
+# Load dataset in same directory as linear-regression-multiple-features.py
 file_path = 'cleaned_carDetails.csv'
 data = pd.read_csv(file_path)
 
