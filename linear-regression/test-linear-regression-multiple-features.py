@@ -16,7 +16,7 @@ def predict_price(features, w, b):
     return np.dot(features, w) + b
 
 # Load the model into variables
-w, b, x_mean, x_std, y_mean, y_std = load_model('linear_regression_model.pkl')
+w, b, x_mean, x_std, y_mean, y_std = load_model('linear_regression__multiple_features_model.pkl')
 
 # 2D array where each row represents the features of a car
 # Example: [Max Power (hp), Year, Length (mm), Width (mm), Height (mm)]
@@ -27,7 +27,7 @@ features_array = np.array([
     [82, 2019, 3995, 1745, 1510],  # Car 4
     [148, 2018, 4735, 1830, 1795],  # Car 5
     [91, 2017, 4490, 1730, 1485],   # Car 6
-    [205, 2007, 4404.36, 1877.06, 1800.86]  # Car 7 
+    [205, 2007, 4404, 1877, 1800]  # Car 7 
 ])
 
 # Normalize input data using the independent variables mean and std from pickle file
@@ -44,4 +44,4 @@ predicted_prices = predicted_prices * 0.012
 
 # Print predicted prices with corresponding features
 for i, features in enumerate(features_array):
-    print(f"Features {features} yield a predicted price of |${predicted_prices[i][0]:<10,.2f}|")
+    print(f"Features {features} yield a predicted price of |${predicted_prices[i]:<10,.2f}|")
