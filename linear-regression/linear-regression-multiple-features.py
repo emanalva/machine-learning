@@ -1,4 +1,4 @@
-# Title: Linear Regression using libraries
+# Title: Linear Regression from scratch with multiple independent variables
 # Author: Emanuel Alvarez
 # Origin Date: August 29, 2024
 
