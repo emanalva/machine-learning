@@ -19,15 +19,15 @@ def predict_price(features, w, b):
 w, b, x_mean, x_std, y_mean, y_std = load_model('linear_regression__multiple_features_model.pkl')
 
 # 2D array where each row represents the features of a car
-# Example: [Max Power (hp), Year, Length (mm), Width (mm), Height (mm)]
+# Example: [Max Power (hp), Year, Length (mm)
 features_array = np.array([
-    [87, 2017, 3990, 1680, 1505],  # Car 1
-    [74, 2014, 3995, 1695, 1555],  # Car 2
-    [79, 2011, 3585, 1595, 1550],  # Car 3
-    [82, 2019, 3995, 1745, 1510],  # Car 4
-    [148, 2018, 4735, 1830, 1795],  # Car 5
-    [91, 2017, 4490, 1730, 1485],   # Car 6
-    [205, 2007, 4404, 1877, 1800]  # Car 7 
+    [87, 2017, 3990],  # Car 1
+    [74, 2014, 3995],  # Car 2
+    [79, 2011, 3585],  # Car 3
+    [82, 2019, 3995],  # Car 4
+    [148, 2018, 4735],  # Car 5
+    [91, 2017, 4490],   # Car 6
+    [205, 2007, 4404]  # Car 7 
 ])
 
 # Normalize input data using the independent variables mean and std from pickle file

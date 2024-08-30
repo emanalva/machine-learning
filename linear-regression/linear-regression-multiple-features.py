@@ -15,7 +15,7 @@ data = pd.read_csv(file_path)
 # print(data.info()) # Show labels (columns) and their datatypes
 
 # Determine the independent and dependent variables, seen in data.info() for linear regression
-x = data[['Max Power', 'Year', 'Length', 'Width', "Height"]].values # Five features
+x = data[['Max Power', 'Year', 'Length']].values # Three features
 y = data['Price'].values # Price as dependent variable y - numpy array with shape (n_samples)
 
 # Normalize x data
