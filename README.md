@@ -1,4 +1,4 @@
-# machine-learning
+# Machine-Learning
 
 ## Repo used to store my ML projects
 
