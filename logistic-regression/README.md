@@ -1,21 +1,21 @@
 # Files associated with logistic-regression learning.
----
 ## README
----
+
+
 ## logistic-regression
-### Model from Scratch
-#### Code:
-##### Multiple independent variabls with one dependent variable
-[logistic-regression.py](./logistic-regression.py)
+  ### Model from Scratch
+  ##### Multiple independent variables with one dependent variable
+  #### Code:
+  - [logistic-regression.py](./logistic-regression.py)
 
-[test-logistic-regression.py](./test-logistic-regression.py)
+  - [test-logistic-regression.py](./test-logistic-regression.py)
+  
+  ### Model using Libraries
+  ##### Multiple independent variables with one dependent variable
+  #### Code:
+  - [logistic-regression-lib.py](./logistic-regression-lib.py)
+  
+  - [test-logistic-regression-lib.py](./test-logistic-regression-lib.py)
+
 #### Dataset(s):
-<!--[INSERT FILE NAME HERE.csv](./INSERT FILE NAME HERE.csv) -->
-### Model using Libraries
-#### Code:
-##### Multiple independent, 1 dependent variable
-[logistic-regression-lib.py](./logistic-regression-lib.py)
-
-[test-logistic-regression-lib.py](./test-logistic-regression-lib.py)
-
----
+<!-- - [INSERT FILE NAME HERE.csv](./INSERT FILE NAME HERE.csv) -->
