@@ -10,7 +10,7 @@ Scripts incorporating linear regression models:
  - Includes scripts with one independent variable and scripts with multiple.
  - The try-3-features branch uses 3 features, while the main branch uses 5 features (features = independent variables).
 
-### [logistic-regression](./logistic-regression/README.md): 
+#### [logistic-regression](./logistic-regression/README.md)
  - Scripts using logistic regression to classify data, similar to the linear regression models but for categorical outcomes.
 
 ## Credits
